@@ -66,6 +66,28 @@ We report two numbers that we deliberately do **not** merge into one:
 
 (A visible-fabrication count — fake headings, prose forced into a table — is also tracked in the ledgers as "junk you can see, but it doesn't fool anyone.")
 
+## Which tool should you use?
+
+A practical picker. It factors in things beyond these 5 documents (install, hardware, cost), so treat it as guidance, not a scored result; the [full writeup](https://pdfmarkdown.app/blog/best-pdf-to-markdown-converter) has the reasoning.
+
+**Run it open-source, on your own machine (developers)**
+
+| If you need | Use | Watch out for |
+|---|---|---|
+| Papers, formulas, complex tables | **MinerU** | best quality; deletes footnotes; VLM wants a GPU |
+| A safe, balanced default | **Marker** | consistent; check the commercial-use license |
+| An honest gap over a fake number | **Docling** | clean tables; drops formulas (never fakes them) |
+| Speed on simple PDFs, at scale | **PyMuPDF4LLM** | fast; reading order breaks at figures |
+| Many input formats, quick ingestion | **MarkItDown** | no headings — skip for RAG chunking |
+
+**Just want it done, no setup (hosted / browser)**
+
+| If you need | Use | Watch out for |
+|---|---|---|
+| Formula-heavy paper (you'll double-check) | **Mathpix** | cloud; paid tiers; can silently drop numbers |
+| One simple PDF, just once | **CloudConvert** | cloud; simple tables only |
+| Everyday / private, in the browser | **pdfmarkdown.app** | runs in your browser; nothing uploaded |
+
 ## How to reproduce
 
 Scores are computed by pure Node.js scripts (no dependencies) that read the answer keys in `keys/` and the human-reviewed verdicts in `ledgers/`:
@@ -120,3 +142,5 @@ The **code** in this repository (scoring scripts, keys, ledgers) is MIT-licensed
 ## Disclosure
 
 This benchmark is published by **pdfmarkdown.app**, which is **one of the nine tools tested**. Because the evaluator is also a contestant, everything needed to check our work is in this repository: the full answer keys, the per-tool ledgers, the deterministic scoring scripts, and every tool's raw Markdown output. The methodology (METHODOLOGY.md) and the cross-review correction log (CORRECTIONS.md) document how scores were set and where they were changed during review — including corrections that helped competitors and lowered our own numbers. If you think a score is wrong, trace it to the ledger line and the source document, and propose a fix.
+
+A narrative walkthrough of these results, with practical use-case recommendations, is on the pdfmarkdown.app blog: [Best PDF to Markdown Tools in 2026](https://pdfmarkdown.app/blog/best-pdf-to-markdown-converter).
