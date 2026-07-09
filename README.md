@@ -27,6 +27,28 @@ Online / general-user tools:
 - **[pdf2md](https://pdf2md.morethan.io)** — browser PDF-to-Markdown tool (pdf2md.morethan.io)
 - **[pdfmarkdown.app](https://pdfmarkdown.app)** — in-browser, privacy-first PDF -> Markdown (publisher of this benchmark; see Disclosure)
 
+## Which tool should you use?
+
+A practical picker. It factors in things beyond these 5 documents (install, hardware, cost), so treat it as guidance, not a scored result; the [full writeup](https://pdfmarkdown.app/blog/best-pdf-to-markdown-converter) has the reasoning, and the scores that back it are just below.
+
+**Run it open-source, on your own machine (developers)**
+
+| If you need | Use | Watch out for |
+|---|---|---|
+| Papers, formulas, complex tables | **MinerU** | best quality; deletes footnotes; VLM wants a GPU |
+| A safe, balanced default | **Marker** | consistent; check the commercial-use license |
+| An honest gap over a fake number | **Docling** | clean tables; drops formulas (never fakes them) |
+| Speed on simple PDFs, at scale | **PyMuPDF4LLM** | fast; reading order breaks at figures |
+| Many input formats, quick ingestion | **MarkItDown** | no headings — skip for RAG chunking |
+
+**Just want it done, no setup (hosted / browser)**
+
+| If you need | Use | Watch out for |
+|---|---|---|
+| Formula-heavy paper (you'll double-check) | **Mathpix** | cloud; paid tiers; can silently drop numbers |
+| One simple PDF, just once | **CloudConvert** | cloud; simple tables only |
+| Everyday / private, in the browser | **pdfmarkdown.app** | runs in your browser; nothing uploaded |
+
 ## The 5 documents
 
 | File | What it is | Why it's hard |
@@ -65,28 +87,6 @@ We report two numbers that we deliberately do **not** merge into one:
 - **Silent errors (a count)** — how many times a value was quietly turned into something that *looks* correct but is wrong. This is the most dangerous failure mode, because an AI cannot tell it happened. A tool that honestly drops a table is safer than one that silently corrupts a number, so a recovery of 82 with zero silent errors can be more trustworthy than an 87 with three.
 
 (A visible-fabrication count — fake headings, prose forced into a table — is also tracked in the ledgers as "junk you can see, but it doesn't fool anyone.")
-
-## Which tool should you use?
-
-A practical picker. It factors in things beyond these 5 documents (install, hardware, cost), so treat it as guidance, not a scored result; the [full writeup](https://pdfmarkdown.app/blog/best-pdf-to-markdown-converter) has the reasoning.
-
-**Run it open-source, on your own machine (developers)**
-
-| If you need | Use | Watch out for |
-|---|---|---|
-| Papers, formulas, complex tables | **MinerU** | best quality; deletes footnotes; VLM wants a GPU |
-| A safe, balanced default | **Marker** | consistent; check the commercial-use license |
-| An honest gap over a fake number | **Docling** | clean tables; drops formulas (never fakes them) |
-| Speed on simple PDFs, at scale | **PyMuPDF4LLM** | fast; reading order breaks at figures |
-| Many input formats, quick ingestion | **MarkItDown** | no headings — skip for RAG chunking |
-
-**Just want it done, no setup (hosted / browser)**
-
-| If you need | Use | Watch out for |
-|---|---|---|
-| Formula-heavy paper (you'll double-check) | **Mathpix** | cloud; paid tiers; can silently drop numbers |
-| One simple PDF, just once | **CloudConvert** | cloud; simple tables only |
-| Everyday / private, in the browser | **pdfmarkdown.app** | runs in your browser; nothing uploaded |
 
 ## How to reproduce
 
