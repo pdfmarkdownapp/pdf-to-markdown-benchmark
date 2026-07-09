@@ -1,0 +1,78 @@
+{
+  "_note": "Defect ledger (evidence-driven). headings/junctions/footnotes = scotus sweeper; anchors = mechanical grep (17 legal anchors). Highlights: pdfmarkdown-app is the only tool that clears all 5 junctions AND keeps all 11 footnotes; MinerU deletes footnote bodies 2-11 (leaving only the markers) = footnote survival 1/11. anchor_silent is 0 for now (the mechanical probe only checks presence; false negatives were reconciled in cross-review).",
+  "tools": {
+    "pdfmarkdown-app": {
+      "headings": { "present": 10, "level": "correct", "fab_headings": 4 },
+      "anchors": { "hit": 16, "total": 17, "silent": 0 },
+      "junctions": { "J1": "ok", "J2": "ok", "J3": "ok", "J4": "ok", "J5": "ok" },
+      "footnotes": { "survive": 11, "total": 11 },
+      "partial": false
+    },
+    "marker": {
+      "headings": { "present": 11, "level": "wrong", "fab_headings": 2 },
+      "anchors": { "hit": 16, "total": 17, "silent": 0 },
+      "junctions": { "J1": "ok", "J2": "broken", "J3": "ok", "J4": "broken", "J5": "broken" },
+      "footnotes": { "survive": 11, "total": 11 },
+      "partial": false
+    },
+    "mineru": {
+      "headings": { "present": 13, "level": "wrong", "fab_headings": 4 },
+      "anchors": {
+        "hit": 16, "total": 17, "silent": 0,
+        "_fix": "The Richmond precedent is on lines 96/220 (the probe was written in the plural, giving a false negative)."
+      },
+      "junctions": { "J1": "ok", "J2": "ok", "J3": "ok", "J4": "broken", "J5": "ok" },
+      "footnotes": { "survive": 1, "total": 11 },
+      "partial": false
+    },
+    "mathpix": {
+      "headings": { "present": 11, "level": "wrong", "fab_headings": 1 },
+      "anchors": {
+        "hit": 15, "total": 17, "silent": 0,
+        "_fix": "date false negative restored; docket/court genuinely lost (cover-page OCR blurred)."
+      },
+      "junctions": { "J1": "ok", "J2": "ok", "J3": "ok", "J4": "broken", "J5": "ok" },
+      "footnotes": { "survive": 11, "total": 11 },
+      "partial": false,
+      "_fix": "Complete output: footnotes 6-11 are all restored (11/11), and Section II / the conclusion / the two-column signature block (not interleaved) are present."
+    },
+    "docling": {
+      "headings": { "present": 10, "level": "correct", "fab_headings": 5 },
+      "anchors": {
+        "hit": 17, "total": 17, "silent": 0,
+        "_fix": "The victim's full name is on line 131 (a double-space defeated the probe, giving a false negative)."
+      },
+      "junctions": { "J1": "ok", "J2": "ok", "J3": "broken", "J4": "ok", "J5": "ok" },
+      "footnotes": { "survive": 11, "total": 11 },
+      "partial": false
+    },
+    "markitdown": {
+      "headings": { "present": 0, "level": "wrong", "fab_headings": 0 },
+      "anchors": { "hit": 17, "total": 17, "silent": 0 },
+      "junctions": { "J1": "ok", "J2": "ok", "J3": "ok", "J4": "broken", "J5": "broken" },
+      "footnotes": { "survive": 11, "total": 11 },
+      "partial": false
+    },
+    "pymupdf4llm": {
+      "headings": { "present": 12, "level": "wrong", "fab_headings": 5 },
+      "anchors": { "hit": 17, "total": 17, "silent": 0 },
+      "junctions": { "J1": "ok", "J2": "ok", "J3": "ok", "J4": "broken", "J5": "ok" },
+      "footnotes": { "survive": 11, "total": 11 },
+      "partial": false
+    },
+    "cloudconvert": {
+      "headings": { "present": 12, "level": "wrong", "fab_headings": 5 },
+      "anchors": { "hit": 17, "total": 17, "silent": 0 },
+      "junctions": { "J1": "ok", "J2": "ok", "J3": "ok", "J4": "broken", "J5": "ok" },
+      "footnotes": { "survive": 11, "total": 11 },
+      "partial": false
+    },
+    "pdf2md": {
+      "headings": { "present": 9, "level": "wrong", "fab_headings": 31 },
+      "anchors": { "hit": 15, "total": 17, "silent": 0 },
+      "junctions": { "J1": "ok", "J2": "ok", "J3": "ok", "J4": "broken", "J5": "broken" },
+      "footnotes": { "survive": 11, "total": 11 },
+      "partial": false
+    }
+  }
+}

@@ -1,0 +1,41 @@
+{
+  "corpus": "landuse-plan-tables",
+  "source": "documents/landuse-plan-tables.pdf (Sonoma County General Plan, Land Use Element, pp.LU-13~16)",
+  "version": "3.0-enumerated",
+  "note": "Pure data tables (5 tables over 4 pages): no prose, no formulas, no images. Ground-truth detail is in key.objects.table. Rate card as before. Fabrications only affect the silent/fabrication axes. Tables decide the result.",
+  "ratecard": { "P0": "silent->0 + silentCount", "P1": -0.5, "P2": -0.2, "P3": -0.05 },
+  "weights": { "structext": 45, "table": 20, "formula": 20, "image": 15 },
+  "absent": ["formula", "image"],
+  "structext": {
+    "headings": { "approx_count": 6, "_desc": "6 headings: the 'Land Use Element' running head + the five table titles Table LU-2~LU-6." },
+    "anchors": {
+      "_desc": "Key numbers/facts that must survive verbatim (mostly signature cell values inside the tables). The probe checks presence; whether a value was silently changed must be verified by eye.",
+      "items": [
+        { "id": "A1_pop2000", "probe": "458,614" },
+        { "id": "A2_pop2020", "probe": "546,030" },
+        { "id": "A3_sr1980", "probe": "122,864" },
+        { "id": "A4_white", "probe": "81\\.6" },
+        { "id": "A5_hisp", "probe": "17\\.3" },
+        { "id": "A6_neg28", "probe": "-2\\.8|−2\\.8|\\(2\\.8" },
+        { "id": "A7_hu2000", "probe": "183,153" },
+        { "id": "A8_hu2020", "probe": "221,640" },
+        { "id": "A9_jobs2020", "probe": "289,260" },
+        { "id": "A10_negcommute", "probe": "-3,647|−3,647|\\(3,647" },
+        { "id": "A11_lu", "probe": "Land Use Element" },
+        { "id": "A12_abag", "probe": "Association of Bay Area Governments|ABAG" }
+      ]
+    },
+    "reading_order": { "_desc": "Each table title sits next to its body; multi-row headers stay intact; hierarchical indentation / subtotals stay in order; rows that span the stub (T3) are not mislabeled; source notes stay with their own table; headers/footers do not bleed into the table body; the two tables on LU-14 are not merged." }
+  },
+  "objects": {
+    "table": [
+      { "id": "T1", "truth": "LU-2 Population Trends, 6 cols ~40 rows, hierarchical indentation + bold subtotals. Signature values: Santa Rosa PA 1980=122,864 / 2000=190,748; County Totals 2000=458,614 / Proj 2020=546,030.", "detect": "458,614|122,864|Population Trends" },
+      { "id": "T2", "truth": "LU-3 Racial composition, 4 cols 9 rows, White 2000=81.6% / Hispanic 2000=17.3% / Total 2000=458,614.", "detect": "81\\.6|Race|Hispanic" },
+      { "id": "T3", "truth": "LU-4 Percent of change by age, 6 cols, rows spanning the stub (Sonoma County / All Cities / Unincorporated x two periods), includes the negative -2.8%.", "detect": "Percent of Change|0-17|Unincorporated" },
+      { "id": "T4", "truth": "LU-5 Housing projection, 5 cols ~30 rows, hierarchical indentation, County Totals Est 2000=183,153 / 2020=221,640 / Avg=1,924.", "detect": "183,153|221,640|Housing" },
+      { "id": "T5", "truth": "LU-6 Employment, 6 cols ~15 rows, Total Jobs 2020=289,260, Implied Out-Commute Change=-3,647 (negative).", "detect": "289,260|Total Jobs|Out-Commute" }
+    ],
+    "formula": [],
+    "image": []
+  }
+}

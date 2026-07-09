@@ -1,0 +1,96 @@
+{
+  "_note": "Defect ledger (evidence-driven). table/headings/reading = landuse sweeper; anchors = mechanical grep. Highlights: pdfmarkdown-app and MinerU keep all five tables faithful; mathpix T1 is silent (87,416 -> 100.0%); pdf2md visibly damages four tables (dangling comma truncation, even -3,647 -> -3,). markitdown 'present' is recorded as 0 on the 'no markdown headings' rule (consistent with its attention/scotus scoring).",
+  "tools": {
+    "pdfmarkdown-app": {
+      "table": {
+        "verdict": { "T1": "faithful", "T2": "faithful", "T3": "faithful", "T4": "faithful", "T5": "faithful" },
+        "severity": {},
+        "fab_tables": 0
+      },
+      "headings": { "present": 5, "level": "correct", "fab_headings": 0 },
+      "reading_order": "ok",
+      "anchors": { "hit": 11, "total": 12 }
+    },
+    "mineru": {
+      "table": {
+        "verdict": { "T1": "faithful", "T2": "faithful", "T3": "faithful", "T4": "faithful", "T5": "faithful" },
+        "severity": {},
+        "fab_tables": 0
+      },
+      "headings": { "present": 5, "level": "correct", "fab_headings": 0 },
+      "reading_order": "ok",
+      "anchors": { "hit": 11, "total": 12 }
+    },
+    "marker": {
+      "table": {
+        "verdict": { "T1": "degraded", "T2": "faithful", "T3": "faithful", "T4": "faithful", "T5": "faithful" },
+        "severity": { "T1": "P2" },
+        "fab_tables": 0
+      },
+      "headings": { "present": 5, "level": "correct", "fab_headings": 0 },
+      "reading_order": "ok",
+      "anchors": { "hit": 11, "total": 12 }
+    },
+    "mathpix": {
+      "table": {
+        "verdict": { "T1": "silent_wrong", "T2": "faithful", "T3": "faithful", "T4": "faithful", "T5": "faithful" },
+        "severity": {},
+        "fab_tables": 0
+      },
+      "headings": { "present": 5, "level": "correct", "fab_headings": 0 },
+      "reading_order": "ok",
+      "anchors": { "hit": 11, "total": 12 }
+    },
+    "docling": {
+      "table": {
+        "verdict": { "T1": "faithful", "T2": "faithful", "T3": "degraded", "T4": "degraded", "T5": "faithful" },
+        "severity": { "T3": "P2", "T4": "P2" },
+        "fab_tables": 0
+      },
+      "headings": { "present": 5, "level": "correct", "fab_headings": 0 },
+      "reading_order": "ok",
+      "anchors": { "hit": 11, "total": 12 }
+    },
+    "markitdown": {
+      "table": {
+        "verdict": { "T1": "degraded", "T2": "degraded", "T3": "faithful", "T4": "degraded", "T5": "degraded" },
+        "severity": { "T1": "P1", "T2": "P2", "T4": "P1", "T5": "P1" },
+        "fab_tables": 4
+      },
+      "headings": { "present": 0, "level": "wrong", "fab_headings": 0 },
+      "reading_order": "broken",
+      "anchors": { "hit": 12, "total": 12 }
+    },
+    "pymupdf4llm": {
+      "table": {
+        "verdict": { "T1": "degraded", "T2": "faithful", "T3": "degraded", "T4": "degraded", "T5": "faithful" },
+        "severity": { "T1": "P2", "T3": "P1", "T4": "P2" },
+        "fab_tables": 0
+      },
+      "headings": { "present": 6, "level": "correct", "fab_headings": 0 },
+      "reading_order": "ok",
+      "anchors": { "hit": 11, "total": 12 }
+    },
+    "cloudconvert": {
+      "table": {
+        "verdict": { "T1": "degraded", "T2": "faithful", "T3": "degraded", "T4": "degraded", "T5": "faithful" },
+        "severity": { "T1": "P1", "T3": "P1", "T4": "P1" },
+        "fab_tables": 0
+      },
+      "headings": { "present": 6, "level": "correct", "fab_headings": 0 },
+      "reading_order": "ok",
+      "anchors": { "hit": 12, "total": 12 }
+    },
+    "pdf2md": {
+      "table": {
+        "verdict": { "T1": "degraded", "T2": "degraded", "T3": "degraded", "T4": "degraded", "T5": "degraded" },
+        "severity": { "T3": "P1", "T1": "P1", "T2": "P1", "T4": "P1", "T5": "P1" },
+        "fab_tables": 0,
+        "_fix": "Four tables moved from silent_wrong to degraded: truncation leaves a dangling comma (458, / -3,) which is visible damage; by this benchmark's own definition (silent = looks-correct-but-wrong) it should be degraded, not counted as deception."
+      },
+      "headings": { "present": 5, "level": "correct", "fab_headings": 7 },
+      "reading_order": "broken",
+      "anchors": { "hit": 10, "total": 12 }
+    }
+  }
+}

@@ -1,0 +1,67 @@
+{
+  "corpus": "attention",
+  "source": "attention.pdf (Attention Is All You Need, 15p, single-column NeurIPS'17)",
+  "version": "3.0-enumerated",
+  "note": "Tool-agnostic ground truth. Scores are derived deterministically from a defect ledger plus a fixed rate card, not set by hand. Each item starts at 1.0: P0 -> 0 and +1 silent-error / P1 -0.5 / P2 -0.2 / P3 -0.05, floored at 0. Dimension score = sum(item scores) / true item count x 100; fabricated items are tracked on a separate fabrication axis.",
+  "ratecard": { "P0": "silent->0 + silentCount", "P1": -0.5, "P2": -0.2, "P3": -0.05 },
+  "weights": { "structext": 45, "table": 20, "formula": 20, "image": 15 },
+
+  "structext": {
+    "headings": {
+      "_desc": "Numbered sections are the true headings. Level is inferred from numbering: level 1 (9) = Abstract/1/2/3/4/5/6/7/References; level 2 (12) = 3.1-3.5, 5.1-5.4, 6.1-6.3; level 3 (3) = 3.2.1-3.2.3. 24+ headings total. Judged on: presence (recall) and level correctness (numbering present but flattened = P3 recoverable; wrong nesting = P2).",
+      "level1": ["Abstract", "1 Introduction", "2 Background", "3 Model Architecture", "4 Why Self-Attention", "5 Training", "6 Results", "7 Conclusion", "References"],
+      "level2": ["3.1 Encoder and Decoder Stacks", "3.2 Attention", "3.3 Position-wise Feed-Forward", "3.4 Embeddings and Softmax", "3.5 Positional Encoding", "5.1 Training Data and Batching", "5.2 Hardware and Schedule", "5.3 Optimizer", "5.4 Regularization", "6.1 Machine Translation", "6.2 Model Variations", "6.3 English Constituency Parsing"],
+      "level3": ["3.2.1 Scaled Dot-Product Attention", "3.2.2 Multi-Head Attention", "3.2.3 Applications of Attention"],
+      "not_headings": ["Ashish Vaswani", "Noam Shazeer", "Niki Parmar", "Jakob Uszkoreit", "Llion Jones", "Aidan N. Gomez", "Lukasz Kaiser"],
+      "not_headings_desc": "The 7 author names belong to the cover author block. Marking them as # headings is a fabricated heading (a precision defect, one false-positive counted each)."
+    },
+    "junctions": {
+      "_desc": "Reading-order-sensitive junctions: places that should stay connected but easily break. A break = P1.",
+      "J1_footnote_p1": "The first-page footnote (Equal contribution / Listing order is random) should be a footnote, not shoved into the top of the body text or into the attention block.",
+      "J2_fig1_flow": "Where Figure 1 (the overall architecture diagram, p3) is inserted, the surrounding body text should stay semantically continuous and not be split mid-sentence by the figure.",
+      "J3_eq_flow": "The formulas in 3.2/3.3 (F1, FFN, etc.) should have continuous body text before and after; the formula should not break a sentence.",
+      "J4_table_caption": "The captions for Tables 1-4 should stay adjacent to their own table bodies and not be displaced elsewhere.",
+      "J5_pagebreak": "At page breaks, paragraphs should not be cut apart by headers/footers/page numbers."
+    },
+    "anchors": {
+      "_desc": "Key facts that must survive verbatim. Missing = 0; silently changed to something else = P0. The probe only checks presence; whether a value was altered must be verified by eye on that line.",
+      "items": [
+        { "id": "A1_bleu_ende", "truth": "28.4", "probe": "28\\.4" },
+        { "id": "A2_bleu_enfr", "truth": "41.8 (41.0 before erratum; tagged source, not penalized)", "probe": "41\\.[08]" },
+        { "id": "A3_dmodel", "truth": "d_model=512", "probe": "512" },
+        { "id": "A4_dff", "truth": "d_ff=2048", "probe": "2048" },
+        { "id": "A5_heads", "truth": "h=8", "probe": "h ?= ?8|8 heads|= 8" },
+        { "id": "A6_layers", "truth": "N=6", "probe": "N ?= ?6|6 layers|6 identical" },
+        { "id": "A7_dk", "truth": "d_k=d_v=64", "probe": "= ?64|d_?k" },
+        { "id": "A8_dropout", "truth": "P_drop=0.1", "probe": "0\\.1" },
+        { "id": "A9_warmup", "truth": "warmup_steps=4000", "probe": "4000" },
+        { "id": "A10_wsj", "truth": "WSJ constituency F1=92.7", "probe": "92\\.7" },
+        { "id": "A11_hardware", "truth": "8 P100 GPUs / 3.5 days", "probe": "P100|3\\.5 days" },
+        { "id": "A12_labelsmooth", "truth": "label smoothing eps_ls=0.1", "probe": "smoothing|_?ls ?= ?0\\.1" }
+      ]
+    }
+  },
+
+  "objects": {
+    "table": [
+      { "id": "T1", "truth": "Table 1: complexity per layer (Self-Attention O(n^2*d), etc.)", "detect": "Complexity per Layer|Maximum Path|Sequential Operations" },
+      { "id": "T2", "truth": "Table 2: BLEU + training cost (28.4/41.8/FLOPs)", "detect": "Training Cost|FLOPs|BLEU" },
+      { "id": "T3", "truth": "Table 3: variants A-E (N/dmodel/dff/h/Pdrop/PPL/BLEU)", "detect": "PPL|params|Variations on the Transformer|train steps" },
+      { "id": "T4", "truth": "Table 4: English constituency parsing (WSJ 92.7)", "detect": "WSJ|constituency|Penn Treebank|92\\.7" }
+    ],
+    "formula": [
+      { "id": "F1_attention", "truth": "Attention(Q,K,V)=softmax(QK^T/sqrt(d_k))V", "detect": "softmax|Attention ?\\(?Q" },
+      { "id": "F2_ffn", "truth": "FFN(x)=max(0,xW1+b1)W2+b2", "detect": "FFN|max ?\\( ?0" },
+      { "id": "F3_lrate", "truth": "lrate=d_model^-0.5*min(...)", "detect": "lrate|step_?num" },
+      { "id": "F4_multihead", "truth": "MultiHead=Concat(head_1..h)W^O; head_i=Attention(...)", "detect": "MultiHead|Concat ?\\(? ?head" },
+      { "id": "F5_pe", "truth": "PE(pos,2i)=sin(...); PE(pos,2i+1)=cos(...)", "detect": "PE_?[\\({]|sin ?\\( ?pos|10000" }
+    ],
+    "image": [
+      { "id": "Fig1", "truth": "overall architecture (encoder-decoder)" },
+      { "id": "Fig2", "truth": "Scaled Dot-Product + Multi-Head Attention" },
+      { "id": "Fig3", "truth": "attention visualization (appendix)" },
+      { "id": "Fig4", "truth": "attention visualization (appendix)" },
+      { "id": "Fig5", "truth": "attention visualization (appendix)" }
+    ]
+  }
+}

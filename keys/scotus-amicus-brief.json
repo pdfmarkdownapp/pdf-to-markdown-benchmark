@@ -1,0 +1,43 @@
+{
+  "corpus": "scotus-amicus-brief",
+  "source": "documents/scotus-amicus-brief.pdf (US Supreme Court amicus brief No.21-659, 20p, pure legal prose)",
+  "version": "3.0-enumerated",
+  "note": "No tables, formulas or images -> all weight goes to Structure & Text (the other dimensions are 'na' and excluded, not scored as 0). Structure & Text = avg(headings / reading-order junctions / content anchors / footnote survival). The original brief contains its own sic typos (QUESTIONS PRESENTRED / TABLE OF AUTHORITHIES / Unites States); these are tagged source and not charged to the converter.",
+  "ratecard": { "P0": "silent->0 + silentCount", "P1": -0.5, "P2": -0.2, "P3": -0.05 },
+  "weights": { "structext": 45, "table": 20, "formula": 20, "image": 15 },
+  "absent": ["table", "formula", "image"],
+  "structext": {
+    "headings": { "total": 14, "approx_count": 14, "_desc": "14 headings: 8 level-1 (cover title + QUESTION PRESENTED + TOC + TOA + IDENTITY/INTEREST + SUMMARY + REASONS FOR GRANTING + CONCLUSION) + 4 TOA sub-heads (CASES/CONST/STATUTES/RULES) + 2 argument sub-sections (I./II.)." },
+    "anchors": {
+      "_desc": "Key legal facts that must survive verbatim. The probe mechanically checks presence; whether a value was silently changed must be verified by eye.",
+      "items": [
+        { "id": "docket", "probe": "21-659" },
+        { "id": "court", "probe": "Supreme Court of the United States" },
+        { "id": "petitioner", "probe": "Asociaci[oó]n de Periodistas de Puerto Rico" },
+        { "id": "respondent", "probe": "Commonwealth of Puerto Rico" },
+        { "id": "amicus", "probe": "Overseas Press Club of Puerto Rico" },
+        { "id": "counsel", "probe": "Marta Ivette Figueroa-Torres" },
+        { "id": "statute", "probe": "Article 5\\.005" },
+        { "id": "case_globe", "probe": "Globe Newspaper" },
+        { "id": "case_press_ent", "probe": "Press.?Enterprise" },
+        { "id": "case_richmond", "probe": "Richmond Newspapers" },
+        { "id": "underlying_case", "probe": "Ocasio Santiago|CG2021CR00274" },
+        { "id": "victim", "probe": "Andrea Cristina Ruiz-Costas" },
+        { "id": "exec_order", "probe": "OE-2021-013" },
+        { "id": "dissent", "probe": "Oronoz-Rodr[ií]guez" },
+        { "id": "censor_arg", "probe": "ultimate censor" },
+        { "id": "closing_quote", "probe": "Democracies die behind closed doors" },
+        { "id": "date", "probe": "December 3" }
+      ]
+    },
+    "junctions": {
+      "J1_footnotes_not_inlined": "The 11 bottom-of-page footnotes must not be spliced into the superscript-carrying body sentences; in particular footnote 1 (p.1, two paragraphs of Rule 37.2/37.6 disclosure) and the short citation footnote (Richmond... at foot of p.3) must not be sewn into the sentence above.",
+      "J2_toa_dotleaders": "The Table of Authorities (pp.iv-v) is a dot-leader list, not a data table: each entry is case name + dot leaders + page number and must not be scattered; the CASES/CONST/STATUTES/RULES grouping must not be jumbled.",
+      "J3_toc_entries": "In the Table of Contents (p.iii) each entry name must line up with its page number (ii/iv/1/2/3/5/7), and I./II. must stay indented under REASONS.",
+      "J4_cross_page": "Body paragraphs must rejoin seamlessly across pages, skipping the centered page number and the bottom-of-page footnote block.",
+      "J5_signature_block": "The two-column signature block (cover + p.15) must not interleave the two attorneys' addresses line by line into one tangle; 'Respectfully submitted' / 'DATED' must stay above the block."
+    },
+    "footnotes": { "total": 11, "_desc": "11 numbered footnotes must each survive as a whole, not vanish and not melt into the body text. Footnote 1 = a substantive two-paragraph disclosure (highest risk of being lost entirely); 2-11 = legal citations (incl. Id./supra)." }
+  },
+  "objects": { "table": [], "formula": [], "image": [] }
+}

@@ -1,0 +1,10 @@
+tool,paper,financial,legal,tables,scan,average,silent_errors
+MinerU,99,95,67,100,71,86,0
+Marker,95,87,82,96,71,86,0
+Docling,63,80,90,92,61,77,0
+PyMuPDF4LLM,61,90,90,82,58,76,0
+MarkItDown,51,65,70,66,33,57,0
+Mathpix,100,84,85,80,59,82,2
+CloudConvert,62,90,90,70,55,73,0
+pdf2md,55,79,80,50,46,62,1
+pdfmarkdown.app,97,90,91,100,83,92,0

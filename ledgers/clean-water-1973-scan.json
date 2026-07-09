@@ -1,0 +1,14 @@
+{
+  "_note": "Scanned-document defect ledger. names/date/cover/reading/image = OCR sweeper, verified. No tool produced a silent misspelling (Rogel! is visible garbage, not a plausible wrong spelling). pdfmarkdown-app is the only tool (alongside marker) to extract the cover photo, but both miss the script-font title; MinerU has the most complete OCR but no image.",
+  "tools": {
+    "pdfmarkdown-app": { "headings": { "present": 3, "level": "correct", "fab_headings": 2 }, "reading_order": "ok", "names": { "correct": 14, "total": 15, "silent": 0 }, "date_ok": false, "cover_title": "none", "image": "present" },
+    "marker": { "headings": { "present": 3, "level": "correct", "fab_headings": 1 }, "reading_order": "broken", "names": { "correct": 14, "total": 15, "silent": 0 }, "date_ok": false, "cover_title": "none", "image": "present" },
+    "mineru": { "headings": { "present": 5, "level": "correct", "fab_headings": 2 }, "reading_order": "ok", "names": { "correct": 15, "total": 15, "silent": 0 }, "date_ok": true, "cover_title": "both", "image": "missing" },
+    "mathpix": { "headings": { "present": 4, "level": "correct", "fab_headings": 1 }, "reading_order": "uncertain", "names": { "correct": 15, "total": 15, "silent": 0 }, "date_ok": false, "cover_title": "both", "image": "missing" },
+    "docling": { "headings": { "present": 3, "level": "correct", "fab_headings": 2 }, "reading_order": "ok", "names": { "correct": 14, "total": 15, "silent": 0 }, "date_ok": true, "cover_title": "both", "image": "missing" },
+    "markitdown": { "headings": { "present": 0, "level": "wrong", "fab_headings": 0 }, "reading_order": "broken", "names": { "correct": 14, "total": 15, "silent": 0 }, "date_ok": false, "cover_title": "none", "image": "missing" },
+    "pymupdf4llm": { "headings": { "present": 3, "level": "correct", "fab_headings": 0 }, "reading_order": "ok", "names": { "correct": 14, "total": 15, "silent": 0 }, "date_ok": false, "cover_title": "none", "image": "missing" },
+    "cloudconvert": { "headings": { "present": 2, "level": "correct", "fab_headings": 3 }, "reading_order": "ok", "names": { "correct": 15, "total": 15, "silent": 0 }, "date_ok": false, "cover_title": "none", "image": "missing" },
+    "pdf2md": { "headings": { "present": 0, "level": "wrong", "fab_headings": 12 }, "reading_order": "ok", "names": { "correct": 14, "total": 15, "silent": 0 }, "date_ok": false, "cover_title": "none", "image": "missing" }
+  }
+}

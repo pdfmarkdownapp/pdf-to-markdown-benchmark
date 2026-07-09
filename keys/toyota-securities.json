@@ -1,0 +1,69 @@
+{
+  "corpus": "toyota-securities",
+  "source": "Toyota Annual Securities Report (Yukashoken Hokokusho), FY ending 2024/03, EDINET filing, pp.1-8",
+  "version": "3.0-enumerated",
+  "note": "A financial filing is dominated by tables and key-value pairs, with almost no images. Rate card same as attention: P0 -> 0 + silent / P1 -0.5 / P2 -0.2 / P3 -0.05. Fabrications only affect the silent/fabrication axes. Japanese labels are given in English; numeric anchors (ASCII) are the load-bearing truth and are used in the detect probes.",
+  "ratecard": {
+    "P0": "silent->0 + silentCount",
+    "P1": -0.5,
+    "P2": -0.2,
+    "P3": -0.05
+  },
+  "weights": {
+    "structext": 45,
+    "table": 20,
+    "formula": 20,
+    "image": 15
+  },
+  "absent": [
+    "image"
+  ],
+  "structext": {
+    "kv_pairs": {
+      "_desc": "13 cover-page label->value bindings (rubric A). Each pair is one item: value correct AND bound to the correct label = faithful; value correct but label displaced/garbled = degraded; missing = missing; value silently changed = P0.",
+      "count": 13
+    },
+    "toc": {
+      "_desc": "Table of contents (rubric B): section names must line up with their right-hand page numbers, and the dot leaders must not garble into noise. Judged ok/degraded/broken."
+    },
+    "headings": {
+      "_desc": "The front pages (pp.1-8) have few real headings (cover / TOC / Part I / Section 1 / '1 Key Management Indicators' plus (1)(2)), approx 8. Headings are a weak signal for this corpus; the contest is decided on tables.",
+      "approx_count": 8
+    },
+    "reading_order": {
+      "_desc": "Vertical-set numbers, page numbers and footnotes must not bleed into the body text; key-value blocks must not stick to the running text."
+    }
+  },
+  "objects": {
+    "table": [
+      {
+        "id": "T_C",
+        "truth": "Consolidated management indicators, IFRS, 116th-120th periods (rubric C): operating revenue / pre-tax profit / profit attributable to owners of parent / total assets / EPS / P/E / cash flow (with the negative triangle sign) / cash & equivalents / number of employees [temporary]. ~9 rows x 5 periods, includes the triangle negative sign and [bracket] temporary counts.",
+        "detect": "45,095,325|29,866,547"
+      },
+      {
+        "id": "T_D",
+        "truth": "US GAAP basis, 116th period single column (rubric D): net sales 29,929,992 and 7 other items.",
+        "detect": "29,929,992|52,680,436"
+      },
+      {
+        "id": "T_E",
+        "truth": "Filing company (non-consolidated) indicators, 5 periods (rubric E): net sales / ordinary income / net income / capital / shares issued / dividend (interim shown in parentheses) / equity ratio / high-low share price.",
+        "detect": "17,575,593|12,729,731"
+      },
+      {
+        "id": "T_F",
+        "truth": "Small dividend table embedded in the notes (rubric F): 220(100) / 240(105) / 260(120) / 300(125) / 375(150).",
+        "detect": "375|260|300"
+      }
+    ],
+    "formula": [
+      {
+        "id": "F_TSR",
+        "truth": "Total shareholder return (%) = period-end share price / [cumulative per-share dividend over the 4 preceding fiscal years + share price at the end of the 5th preceding fiscal year] -- a fraction (rubric G).",
+        "detect": "TSR|shareholder return"
+      }
+    ],
+    "image": []
+  }
+}

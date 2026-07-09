@@ -1,0 +1,12 @@
+# macOS
+.DS_Store
+
+# Node
+node_modules/
+npm-debug.log*
+
+# Logs / temp
+*.log
+
+# Local third-party benchmark inputs; source links/ranges live in documents/README.md.
+documents/*.pdf

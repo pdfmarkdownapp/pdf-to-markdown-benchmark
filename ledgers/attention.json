@@ -1,0 +1,157 @@
+{
+  "_note": "Defect ledger (evidence-driven, every cell traceable to a line). headings/junctions/tables/formula = 4 sweeper passes across the 9 tools; anchors = mechanical grep (3 corrections after eyeballing); image = carried over from the crop review.",
+  "_known_gaps": "The anchor set does not yet cover footnote content, so a case like MinerU dropping a whole footnote (a 'silent content loss') is not currently penalized. Deferred to a future key version; not patched over.",
+  "_severity_rule": "degraded defaults to P2 (-0.2); when the evidence explicitly shows structure collapsed beyond row/column recognition or half of it lost = P1 (-0.5). Fabrications (fake tables/headings) are recorded on a separate fabrication axis, not folded into recovery. Zero silent_wrong across this corpus.",
+  "tools": {
+    "pdfmarkdown-app": {
+      "headings": { "present": 24, "level": "flat_numbered", "fab_headings": 5 },
+      "anchors": { "hit": 12, "total": 12 },
+      "junctions": { "J1": "ok", "J2": "ok", "J3": "ok", "J4": "ok", "J5": "ok" },
+      "table": {
+        "verdict": { "T1": "faithful", "T2": "faithful", "T3": "faithful", "T4": "degraded" },
+        "severity": { "T4": "P2" },
+        "fab_tables": 0,
+        "_fab_note": "Rendering the cover author/affiliation block as a table is an intentional design choice (owner-confirmed) and is not counted as a false detection."
+      },
+      "formula": {
+        "verdict": { "F1_attention": "faithful", "F2_ffn": "faithful", "F3_lrate": "faithful", "F4_multihead": "faithful", "F5_pe": "faithful" },
+        "severity": {},
+        "fab_formulas": 0
+      },
+      "image": { "score": 0.9 }
+    },
+    "marker": {
+      "headings": { "present": 24, "level": "flat_numbered", "fab_headings": 1 },
+      "anchors": { "hit": 12, "total": 12 },
+      "junctions": { "J1": "ok", "J2": "ok", "J3": "ok", "J4": "ok", "J5": "broken" },
+      "table": {
+        "verdict": { "T1": "faithful", "T2": "degraded", "T3": "degraded", "T4": "faithful" },
+        "severity": { "T2": "P2", "T3": "P2" },
+        "fab_tables": 1
+      },
+      "formula": {
+        "verdict": { "F1_attention": "degraded", "F2_ffn": "faithful", "F3_lrate": "faithful", "F4_multihead": "faithful", "F5_pe": "faithful" },
+        "severity": { "F1_attention": "P2" },
+        "fab_formulas": 0
+      },
+      "image": { "score": 1 }
+    },
+    "mineru": {
+      "headings": { "present": 24, "level": "flat_numbered", "fab_headings": 7 },
+      "anchors": { "hit": 12, "total": 12 },
+      "junctions": { "J1": "na", "J2": "ok", "J3": "ok", "J4": "ok", "J5": "ok" },
+      "table": {
+        "verdict": { "T1": "faithful", "T2": "faithful", "T3": "faithful", "T4": "faithful" },
+        "severity": {},
+        "fab_tables": 0
+      },
+      "formula": {
+        "verdict": { "F1_attention": "faithful", "F2_ffn": "faithful", "F3_lrate": "faithful", "F4_multihead": "faithful", "F5_pe": "faithful" },
+        "severity": {},
+        "fab_formulas": 0
+      },
+      "image": { "score": 1 }
+    },
+    "mathpix": {
+      "headings": { "present": 24, "level": "correct", "fab_headings": 0 },
+      "anchors": { "hit": 12, "total": 12 },
+      "junctions": { "J1": "ok", "J2": "ok", "J3": "ok", "J4": "ok", "J5": "ok" },
+      "table": {
+        "verdict": { "T1": "faithful", "T2": "faithful", "T3": "faithful", "T4": "faithful" },
+        "severity": {},
+        "fab_tables": 0
+      },
+      "formula": {
+        "verdict": { "F1_attention": "faithful", "F2_ffn": "faithful", "F3_lrate": "faithful", "F4_multihead": "faithful", "F5_pe": "faithful" },
+        "severity": {},
+        "fab_formulas": 0
+      },
+      "image": { "score": 1 },
+      "_fix": "Complete output: Table 4 is a clean pipe table with all values correct (88.3/91.3/92.7/93.0/93.3), the Section 7 / References headings are restored, and Figures 3-5 are extracted."
+    },
+    "docling": {
+      "headings": { "present": 24, "level": "flat_numbered", "fab_headings": 1 },
+      "anchors": { "hit": 12, "total": 12 },
+      "junctions": { "J1": "ok", "J2": "ok", "J3": "ok", "J4": "ok", "J5": "ok" },
+      "table": {
+        "verdict": { "T1": "faithful", "T2": "degraded", "T3": "faithful", "T4": "faithful" },
+        "severity": { "T2": "P2" },
+        "fab_tables": 0,
+        "_fix": "T2 FLOPs exponent flattened; aligned to degraded."
+      },
+      "formula": {
+        "verdict": { "F1_attention": "missing", "F2_ffn": "missing", "F3_lrate": "missing", "F4_multihead": "missing", "F5_pe": "missing" },
+        "severity": {},
+        "fab_formulas": 0
+      },
+      "image": { "score": 0 }
+    },
+    "markitdown": {
+      "headings": { "present": 0, "level": "wrong", "fab_headings": 0 },
+      "anchors": { "hit": 12, "total": 12 },
+      "junctions": { "J1": "ok", "J2": "ok", "J3": "ok", "J4": "ok", "J5": "broken" },
+      "table": {
+        "verdict": { "T1": "degraded", "T2": "degraded", "T3": "degraded", "T4": "degraded" },
+        "severity": { "T1": "P1", "T2": "P1", "T3": "P1", "T4": "P2" },
+        "fab_tables": 5
+      },
+      "formula": {
+        "verdict": { "F1_attention": "degraded", "F2_ffn": "degraded", "F3_lrate": "degraded", "F4_multihead": "degraded", "F5_pe": "degraded" },
+        "severity": { "F1_attention": "P1", "F2_ffn": "P1", "F3_lrate": "P2", "F4_multihead": "P1", "F5_pe": "P1" },
+        "fab_formulas": 0,
+        "_fix": "Tightened to the same ruler: F1 collapsed to a lone sqrt, F2 subscripts all lost and unrecoverable, F4/F5 flattened = structure collapsed -> P1; F3 numeric value present = P2."
+      },
+      "image": { "score": 0 }
+    },
+    "pymupdf4llm": {
+      "headings": { "present": 20, "level": "correct", "fab_headings": 1 },
+      "anchors": { "hit": 12, "total": 12 },
+      "junctions": { "J1": "ok", "J2": "broken", "J3": "broken", "J4": "uncertain", "J5": "broken" },
+      "table": {
+        "verdict": { "T1": "faithful", "T2": "degraded", "T3": "degraded", "T4": "faithful" },
+        "severity": { "T3": "P2", "T2": "P2" },
+        "fab_tables": 0,
+        "_fix": "T2 FLOPs split across cells, same defect as marker; aligned to degraded."
+      },
+      "formula": {
+        "verdict": { "F1_attention": "missing", "F2_ffn": "faithful", "F3_lrate": "missing", "F4_multihead": "degraded", "F5_pe": "missing" },
+        "severity": { "F4_multihead": "P1" },
+        "fab_formulas": 0
+      },
+      "image": { "score": 0 }
+    },
+    "cloudconvert": {
+      "headings": { "present": 24, "level": "flat_numbered", "fab_headings": 1 },
+      "anchors": { "hit": 12, "total": 12 },
+      "junctions": { "J1": "ok", "J2": "ok", "J3": "ok", "J4": "ok", "J5": "broken" },
+      "table": {
+        "verdict": { "T1": "degraded", "T2": "degraded", "T3": "degraded", "T4": "degraded" },
+        "severity": { "T1": "P2", "T2": "P1", "T3": "P1", "T4": "P2" },
+        "fab_tables": 0
+      },
+      "formula": {
+        "verdict": { "F1_attention": "missing", "F2_ffn": "faithful", "F3_lrate": "missing", "F4_multihead": "degraded", "F5_pe": "missing" },
+        "severity": { "F4_multihead": "P1" },
+        "fab_formulas": 0
+      },
+      "image": { "score": 0 }
+    },
+    "pdf2md": {
+      "headings": { "present": 9, "level": "flat_numbered", "fab_headings": 35 },
+      "anchors": { "hit": 11, "total": 12 },
+      "junctions": { "J1": "ok", "J2": "ok", "J3": "ok", "J4": "ok", "J5": "broken" },
+      "table": {
+        "verdict": { "T1": "degraded", "T2": "degraded", "T3": "degraded", "T4": "degraded" },
+        "severity": { "T1": "P1", "T2": "P1", "T3": "P1", "T4": "P1" },
+        "fab_tables": 0
+      },
+      "formula": {
+        "verdict": { "F1_attention": "degraded", "F2_ffn": "faithful", "F3_lrate": "degraded", "F4_multihead": "degraded", "F5_pe": "degraded" },
+        "severity": { "F1_attention": "P1", "F3_lrate": "P1", "F4_multihead": "P1", "F5_pe": "P1" },
+        "fab_formulas": 0,
+        "_fix": "Correction for an over-lenient formula call: F1 exploded into #### headings / code blocks, F3/F5 exponents garbled, F4 sub/superscripts flattened = structure collapsed beyond recognition -> P1 (F2 still readable)."
+      },
+      "image": { "score": 0 }
+    }
+  }
+}

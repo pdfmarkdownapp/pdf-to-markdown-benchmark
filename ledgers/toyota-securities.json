@@ -1,0 +1,125 @@
+{
+  "_note": "Defect ledger (evidence-driven, every cell traceable to a line). kv/toc/headings/reading_order/formula = structure sweeper; table = table sweeper. Highlights: mathpix T_F = silent_wrong (drops the main dividend amount, keeps only the interim amount, so an AI reads it wrong); pdfmarkdown-app and MinerU keep every table faithful; pdf2md emits no table syntax (code blocks); only MinerU renders the TSR formula faithfully.",
+  "tools": {
+    "pdfmarkdown-app": {
+      "kv": { "present": 13, "total": 13, "silent": 0 },
+      "toc": "ok",
+      "headings": { "present": 5, "level": "correct", "fab_headings": 3 },
+      "reading_order": "ok",
+      "formula": { "verdict": { "F_TSR": "degraded" }, "severity": { "F_TSR": "P2" } },
+      "table": {
+        "verdict": { "T_C": "faithful", "T_D": "faithful", "T_E": "faithful", "T_F": "faithful" },
+        "severity": {},
+        "fab_tables": 0
+      },
+      "partial": false
+    },
+    "marker": {
+      "kv": { "present": 13, "total": 13, "silent": 0 },
+      "toc": "degraded",
+      "headings": { "present": 8, "level": "correct", "fab_headings": 3 },
+      "reading_order": "ok",
+      "formula": { "verdict": { "F_TSR": "degraded" }, "severity": { "F_TSR": "P2" } },
+      "table": {
+        "verdict": { "T_C": "faithful", "T_D": "degraded", "T_E": "degraded", "T_F": "degraded" },
+        "severity": { "T_D": "P1", "T_E": "P2", "T_F": "P2" },
+        "fab_tables": 1
+      },
+      "partial": false
+    },
+    "mineru": {
+      "kv": { "present": 13, "total": 13, "silent": 0 },
+      "toc": "ok",
+      "headings": {
+        "present": 6, "level": "wrong", "fab_headings": 13,
+        "_fix": "Fabrication recount: 19 heading lines - 6 real = 13 (the original sweeper miscounted as 20)."
+      },
+      "reading_order": "ok",
+      "formula": { "verdict": { "F_TSR": "faithful" }, "severity": {} },
+      "table": {
+        "verdict": { "T_C": "faithful", "T_D": "faithful", "T_E": "faithful", "T_F": "faithful" },
+        "severity": {},
+        "fab_tables": 0
+      },
+      "partial": false
+    },
+    "mathpix": {
+      "kv": { "present": 13, "total": 13, "silent": 0 },
+      "toc": "ok",
+      "headings": { "present": 6, "level": "correct", "fab_headings": 1 },
+      "reading_order": "ok",
+      "formula": { "verdict": { "F_TSR": "degraded" }, "severity": { "F_TSR": "P2" } },
+      "table": {
+        "verdict": { "T_C": "faithful", "T_D": "degraded", "T_E": "degraded", "T_F": "silent_wrong" },
+        "severity": { "T_D": "P2", "T_E": "P2" },
+        "fab_tables": 0
+      },
+      "partial": false
+    },
+    "docling": {
+      "kv": { "present": 13, "total": 13, "silent": 0 },
+      "toc": "degraded",
+      "headings": { "present": 6, "level": "correct", "fab_headings": 1 },
+      "reading_order": "broken",
+      "formula": { "verdict": { "F_TSR": "degraded" }, "severity": { "F_TSR": "P2" } },
+      "table": {
+        "verdict": { "T_C": "faithful", "T_D": "faithful", "T_E": "degraded", "T_F": "degraded" },
+        "severity": { "T_E": "P2", "T_F": "P2" },
+        "fab_tables": 1
+      },
+      "partial": false
+    },
+    "markitdown": {
+      "kv": { "present": 13, "total": 13, "silent": 0 },
+      "toc": "ok",
+      "headings": { "present": 0, "level": "wrong", "fab_headings": 0 },
+      "reading_order": "broken",
+      "formula": { "verdict": { "F_TSR": "degraded" }, "severity": { "F_TSR": "P2" } },
+      "table": {
+        "verdict": { "T_C": "degraded", "T_D": "degraded", "T_E": "degraded", "T_F": "degraded" },
+        "severity": { "T_C": "P1", "T_D": "P1", "T_E": "P1", "T_F": "P2" },
+        "fab_tables": 6
+      },
+      "partial": false
+    },
+    "pymupdf4llm": {
+      "kv": { "present": 13, "total": 13, "silent": 0 },
+      "toc": "ok",
+      "headings": { "present": 6, "level": "correct", "fab_headings": 0 },
+      "reading_order": "ok",
+      "formula": { "verdict": { "F_TSR": "degraded" }, "severity": { "F_TSR": "P2" } },
+      "table": {
+        "verdict": { "T_C": "faithful", "T_D": "faithful", "T_E": "degraded", "T_F": "degraded" },
+        "severity": { "T_E": "P2", "T_F": "P2" },
+        "fab_tables": 1
+      },
+      "partial": false
+    },
+    "cloudconvert": {
+      "kv": { "present": 13, "total": 13, "silent": 0 },
+      "toc": "ok",
+      "headings": { "present": 6, "level": "correct", "fab_headings": 1 },
+      "reading_order": "ok",
+      "formula": { "verdict": { "F_TSR": "degraded" }, "severity": { "F_TSR": "P2" } },
+      "table": {
+        "verdict": { "T_C": "faithful", "T_D": "faithful", "T_E": "degraded", "T_F": "degraded" },
+        "severity": { "T_E": "P2", "T_F": "P2" },
+        "fab_tables": 0
+      },
+      "partial": false
+    },
+    "pdf2md": {
+      "kv": { "present": 13, "total": 13, "silent": 1 },
+      "toc": "ok",
+      "headings": { "present": 6, "level": "correct", "fab_headings": 11 },
+      "reading_order": "ok",
+      "formula": { "verdict": { "F_TSR": "degraded" }, "severity": { "F_TSR": "P2" } },
+      "table": {
+        "verdict": { "T_C": "degraded", "T_D": "degraded", "T_E": "degraded", "T_F": "degraded" },
+        "severity": { "T_C": "P1", "T_D": "P1", "T_E": "P1", "T_F": "P1" },
+        "fab_tables": 0
+      },
+      "partial": false
+    }
+  }
+}

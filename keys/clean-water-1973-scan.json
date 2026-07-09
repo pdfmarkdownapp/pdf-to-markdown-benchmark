@@ -1,0 +1,36 @@
+{
+  "corpus": "clean-water-1973-scan",
+  "source": "documents/clean-water-1973-scan.pdf (scanned booklet: 1973 Detroit Metro Water Department, cover + inside cover)",
+  "version": "3.0-enumerated",
+  "is_scan": true,
+  "note": "Not a data-table document. p1 = a full-bleed sunset photo with a script-font title; p2 = a two-column roster of officials + the general manager. No tables, no formulas. Tests OCR fidelity of names / script-font title + two-column reading order (no interleaving) + cover photo extraction. A silent error here = a surname OCR'd into a plausible-looking wrong spelling.",
+  "ratecard": { "P0": "silent->0 + silentCount", "P1": -0.5, "P2": -0.2, "P3": -0.05 },
+  "weights": { "structext": 45, "table": 20, "formula": 20, "image": 15 },
+  "absent": ["table", "formula"],
+  "structext": {
+    "headings": { "approx_count": 6, "_desc": "Script-font 'Clean Water' / 'A New Day...', plus DETROIT METRO WATER DEPARTMENT, COMMON COUNCIL, BOARD OF WATER COMMISSIONERS, GERALD J. REMUS." },
+    "anchors": {
+      "_desc": "Names / date / photo caption must survive verbatim and correctly spelled. The script-font title carries the highest OCR risk.",
+      "items": [
+        { "id": "a1_org", "probe": "DETROIT METRO WATER DEPARTMENT" },
+        { "id": "a2_date", "probe": "DECEMBER 1973|December 1973" },
+        { "id": "a3_title1", "probe": "Clean Water" },
+        { "id": "a4_title2", "probe": "New Day for Southeast Michigan" },
+        { "id": "a5_mayor", "probe": "ROMAN S\\.? GRIBBS|Roman S\\.? Gribbs" },
+        { "id": "a6_gm", "probe": "GERALD J\\.? REMUS|Gerald J\\.? Remus" },
+        { "id": "a7_council_pres", "probe": "Mel Ravitz" },
+        { "id": "a8_levin", "probe": "Carl M\\.? Levin" },
+        { "id": "a9_board_pres", "probe": "Frank G\\.? Schemanske" },
+        { "id": "a10_beaubien", "probe": "Charles H\\.? Beaubien" },
+        { "id": "a11_lamerato", "probe": "John Lamerato" },
+        { "id": "a12_photo", "probe": "Lake St\\.? Clair Sunrise" }
+      ]
+    },
+    "reading_order": { "_desc": "The p2 two-column roster: read the full left column COMMON COUNCIL (8 people) before the right column BOARD (7 people); do not interleave line by line. GERALD J. REMUS is a centered block after both columns. The footer (Cover Photo left / Litho right) must not be merged into one line." }
+  },
+  "objects": {
+    "table": [],
+    "formula": [],
+    "image": [ { "id": "img1_cover", "truth": "full-bleed cover sunset photo (Lake St. Clair) with the script-font title overprinted on it" } ]
+  }
+}
