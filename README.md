@@ -1,4 +1,10 @@
-# PDF -> Markdown Conversion-Quality Benchmark
+# PDF to Markdown Converter Benchmark — Docling, Marker, MinerU, Mathpix & more
+
+[![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
+![Tools benchmarked](https://img.shields.io/badge/tools-9-brightgreen)
+![Documents](https://img.shields.io/badge/documents-5-orange)
+![Dependencies](https://img.shields.io/badge/dependencies-none-success)
+![Reproducible](https://img.shields.io/badge/scoring-deterministic-blueviolet)
 
 An evidence-driven, reproducible quality benchmark of **9 PDF -> Markdown converters** on **5 deliberately hard documents**, scored for what an LLM actually needs: can a reader who only sees the converted Markdown (and never the original PDF) faithfully reconstruct the document? Every score is derived from a published answer key and a per-tool defect ledger, so anyone can audit or challenge a number rather than take it on faith.
 
