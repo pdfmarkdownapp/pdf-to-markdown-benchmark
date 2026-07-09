@@ -32,13 +32,14 @@ Online / general-user tools:
 A practical picker. It factors in things beyond these 5 documents (install, hardware, cost), so treat it as guidance, not a scored result; the [full writeup](https://pdfmarkdown.app/blog/best-pdf-to-markdown-converter) has the reasoning, and the scores that back it are just below.
 
 ```mermaid
-flowchart TD
+flowchart LR
     Q{Self-host, or no setup?}
     Q -->|Self-host, developer| DEV{What matters most?}
     DEV -->|Papers, formulas, tables| MinerU[MinerU]
     DEV -->|Safe, balanced default| Marker[Marker]
     DEV -->|Honest gaps over fake data| Docling[Docling]
     DEV -->|Raw speed at scale| PyMu[PyMuPDF4LLM]
+    DEV -->|Many formats, but not for RAG| MarkItDown[MarkItDown]
     Q -->|No setup, browser/cloud| HOST{What matters most?}
     HOST -->|Formula-heavy paper| Mathpix[Mathpix]
     HOST -->|One-off simple PDF| CloudConvert[CloudConvert]
